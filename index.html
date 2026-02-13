@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mission Saint-Valentin 💝 Ernest & Grace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Conteneur principal -->
+    <div id="app">
+        
+        <!-- Section 1: Introduction -->
+        <section id="intro-section" class="section active">
+            <div class="container">
+                <h1 class="title-main">
+                    Mission Saint-Valentin
+                    <span class="hearts">💝</span>
+                </h1>
+                <div class="subtitle">Ernest & Grace</div>
+                
+                <div class="mission-brief">
+                    <p>Ma chère Grace,</p>
+                    <p>Pour cette Saint-Valentin, j'ai préparé quelque chose de spécial...</p>
+                    <p>Résous ces 3 énigmes basées sur notre histoire pour découvrir ta surprise. 🔐</p>
+                </div>
+                
+                <div class="qr-section">
+                    <p class="qr-instruction">📱 Scan ce QR code avec ton téléphone pour commencer</p>
+                    <div id="qr-code-container" class="qr-code-container">
+                        <img id="qr-code" src="" alt="QR Code" class="qr-code">
+                    </div>
+                </div>
+                
+                <div class="progress-indicator">
+                    <div class="progress-step completed">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Énigme 1</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Énigme 2</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Énigme 3</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-circle">🎁</div>
+                        <div class="step-label">Coffre</div>
+                    </div>
+                </div>
+                
+                <button class="btn-primary" onclick="app.startMission()">
+                    Commencer la mission
+                </button>
+            </div>
+        </section>
+        
+        <!-- Section 2: Énigme 1 -->
+        <section id="enigme1-section" class="section">
+            <div class="container">
+                <div class="enigme-header">
+                    <span class="enigme-number">Énigme 1/3</span>
+                    <h2>Le Commencement</h2>
+                </div>
+                
+                <div class="enigme-content">
+                    <p class="enigme-question">
+                        Quelle est la date où notre histoire a officiellement commencé ?
+                    </p>
+                    <p class="enigme-hint">Format : JJMMYYYY (ex: 14022024)</p>
+                    
+                    <input type="text" 
+                           id="enigme1-input" 
+                           class="enigme-input" 
+                           placeholder="Entrez la date..."
+                           maxlength="8"
+                           inputmode="numeric">
+                    
+                    <div id="enigme1-feedback" class="feedback"></div>
+                    
+                    <button class="btn-primary" onclick="app.checkEnigme1()">
+                        Valider
+                    </button>
+                </div>
+                
+                <div id="fragment1" class="code-fragment hidden">
+                    <div class="fragment-reveal">
+                        ✨ Fragment de code débloqué : <span class="code">ERN</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Énigme 2 -->
+        <section id="enigme2-section" class="section">
+            <div class="container">
+                <div class="enigme-header">
+                    <span class="enigme-number">Énigme 2/3</span>
+                    <h2>Notre Secret</h2>
+                </div>
+                
+                <div class="enigme-content">
+                    <p class="enigme-question">
+                        Comment est-ce que je t'appelle affectueusement ?
+                    </p>
+                    <p class="enigme-hint">Un surnom qui te fait sourire... 😊</p>
+                    
+                    <input type="text" 
+                           id="enigme2-input" 
+                           class="enigme-input" 
+                           placeholder="Entrez le surnom...">
+                    
+                    <div id="enigme2-feedback" class="feedback"></div>
+                    
+                    <button class="btn-primary" onclick="app.checkEnigme2()">
+                        Valider
+                    </button>
+                </div>
+                
+                <div id="fragment2" class="code-fragment hidden">
+                    <div class="fragment-reveal">
+                        ✨ Fragment de code débloqué : <span class="code">EST</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Énigme 3 -->
+        <section id="enigme3-section" class="section">
+            <div class="container">
+                <div class="enigme-header">
+                    <span class="enigme-number">Énigme 3/3</span>
+                    <h2>La Première Rencontre</h2>
+                </div>
+                
+                <div class="enigme-content">
+                    <p class="enigme-question">
+                        Quelle est la date de notre toute première rencontre ?
+                    </p>
+                    <p class="enigme-hint">Le jour où nos chemins se sont croisés (JJMMYYYY)</p>
+                    
+                    <input type="text" 
+                           id="enigme3-input" 
+                           class="enigme-input" 
+                           placeholder="Entrez la date..."
+                           maxlength="8"
+                           inputmode="numeric">
+                    
+                    <div id="enigme3-feedback" class="feedback"></div>
+                    
+                    <button class="btn-primary" onclick="app.checkEnigme3()">
+                        Valider
+                    </button>
+                </div>
+                
+                <div id="fragment3" class="code-fragment hidden">
+                    <div class="fragment-reveal">
+                        ✨ Fragment de code débloqué : <span class="code">GRC</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 5: Code Final -->
+        <section id="code-section" class="section">
+            <div class="container">
+                <div class="enigme-header">
+                    <h2>Le Code Final</h2>
+                </div>
+                
+                <div class="enigme-content">
+                    <p class="enigme-question">
+                        Assemble les trois fragments pour ouvrir le coffre !
+                    </p>
+                    
+                    <div class="fragments-recap">
+                        <div class="fragment-box">ERN</div>
+                        <div class="fragment-box">EST</div>
+                        <div class="fragment-box">GRC</div>
+                    </div>
+                    
+                    <input type="text" 
+                           id="code-input" 
+                           class="enigme-input code-input" 
+                           placeholder="Entrez le code..."
+                           maxlength="9">
+                    
+                    <div id="code-feedback" class="feedback"></div>
+                    
+                    <button class="btn-primary" onclick="app.checkFinalCode()">
+                        Ouvrir le coffre
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 6: Coffre (Animation) -->
+        <section id="coffre-section" class="section">
+            <div class="container">
+                <div class="coffre-container">
+                    <div id="coffre" class="coffre closed">
+                        <div class="coffre-lid">
+                            <div class="coffre-lock">🔒</div>
+                        </div>
+                        <div class="coffre-body"></div>
+                    </div>
+                </div>
+                
+                <div id="coffre-message" class="coffre-message hidden">
+                    <h2>🎉 Coffre débloqué ! 🎉</h2>
+                    <p>Ta surprise t'attend...</p>
+                </div>
+            </div>
+            
+            <!-- Confettis -->
+            <canvas id="confetti-canvas"></canvas>
+        </section>
+        
+        <!-- Section 7: Révélation du Restaurant -->
+        <section id="cartes-section" class="section">
+            <div class="container">
+                <h2>Ta Surprise ! 🎁</h2>
+                <p class="instruction">Découvre le restaurant que j'ai choisi pour notre soirée romantique... ✨</p>
+                
+                <div id="cartes-grid" class="cartes-grid cartes-grid-single">
+                    <!-- La carte sera générée dynamiquement -->
+                </div>
+                
+                <button id="btn-confirm-choice" class="btn-primary hidden" onclick="app.confirmChoice()">
+                    C'est parfait ! 💕
+                </button>
+            </div>
+        </section>
+        
+        <!-- Section 8: Résultat Final -->
+        <section id="resultat-section" class="section">
+            <div class="container">
+                <h2>🎊 C'est Parfait ! 🎊</h2>
+                
+                <div id="restaurant-final" class="restaurant-final">
+                    <!-- Informations du restaurant choisi -->
+                </div>
+                
+                <p class="final-message">
+                    J'ai hâte de partager ce moment avec toi ! 💝
+                </p>
+                
+                <div class="final-signature">
+                    Avec tout mon amour,<br>
+                    <strong>Ernest</strong> 💕
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

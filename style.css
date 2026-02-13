@@ -1,0 +1,818 @@
+/* =========================================
+   RESET & BASE
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Couleurs romantiques */
+    --color-bg: #0a0a0f;
+    --color-bg-light: #1a1a2e;
+    --color-primary: #ff6b9d;
+    --color-secondary: #c44569;
+    --color-accent: #f8b500;
+    --color-success: #4caf50;
+    --color-error: #ff4757;
+    --color-text: #ffffff;
+    --color-text-dim: #b4b4c8;
+    --color-glow: rgba(255, 107, 157, 0.6);
+    
+    /* Espacements */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    color: var(--color-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* =========================================
+   SECTIONS & NAVIGATION
+   ========================================= */
+
+.section {
+    min-height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg) 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.section.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   TYPOGRAPHIE
+   ========================================= */
+
+.title-main {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.hearts {
+    display: inline-block;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    color: var(--color-primary);
+}
+
+/* =========================================
+   QR CODE
+   ========================================= */
+
+.qr-section {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.qr-instruction {
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-md);
+}
+
+.qr-code-container {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--spacing-lg);
+}
+
+.qr-code {
+    width: 250px;
+    height: 250px;
+    image-rendering: pixelated;
+}
+
+/* =========================================
+
+.mission-brief {
+    background: var(--color-bg-light);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    margin: var(--spacing-lg) 0;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 0 30px var(--color-glow);
+}
+
+.mission-brief p {
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+/* =========================================
+   INDICATEUR DE PROGRESSION
+   ========================================= */
+
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: var(--spacing-xl) 0;
+    padding: 0 var(--spacing-sm);
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.step-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-bg-light);
+    border: 3px solid var(--color-text-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all var(--transition-normal);
+}
+
+.progress-step.completed .step-circle {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px var(--color-glow);
+}
+
+.progress-step.active .step-circle {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px var(--color-glow);
+    animation: pulse-border 1.5s ease-in-out infinite;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+    text-align: center;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background: var(--color-text-dim);
+    margin: 0 var(--spacing-xs);
+    position: relative;
+    top: -15px;
+}
+
+/* =========================================
+   ÉNIGMES
+   ========================================= */
+
+.enigme-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.enigme-number {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.enigme-content {
+    background: var(--color-bg-light);
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.enigme-question {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+.enigme-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    margin-bottom: var(--spacing-lg);
+}
+
+.enigme-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-normal);
+    outline: none;
+}
+
+.enigme-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(248, 181, 0, 0.4);
+}
+
+.enigme-input.error {
+    border-color: var(--color-error);
+    animation: shake 0.5s ease-in-out;
+}
+
+.enigme-input.success {
+    border-color: var(--color-success);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+}
+
+/* =========================================
+   FEEDBACK
+   ========================================= */
+
+.feedback {
+    min-height: 30px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.feedback.error {
+    color: var(--color-error);
+}
+
+.feedback.success {
+    color: var(--color-success);
+}
+
+/* =========================================
+   FRAGMENTS DE CODE
+   ========================================= */
+
+.code-fragment {
+    margin-top: var(--spacing-lg);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-slow);
+}
+
+.code-fragment.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fragment-reveal {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 0 30px var(--color-glow);
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.code {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 16px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    margin-left: var(--spacing-sm);
+}
+
+/* =========================================
+   CODE FINAL
+   ========================================= */
+
+.fragments-recap {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.fragment-box {
+    background: var(--color-bg);
+    border: 2px solid var(--color-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0 0 20px var(--color-glow);
+}
+
+.code-input {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+}
+
+/* =========================================
+   COFFRE
+   ========================================= */
+
+.coffre-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    perspective: 1000px;
+}
+
+.coffre {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.coffre-body {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(135deg, #8b4513, #654321);
+    border: 4px solid #4a2511;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.coffre-body::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 30px;
+    background: #d4af37;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.coffre-lid {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 70px;
+    background: linear-gradient(135deg, #a0522d, #8b4513);
+    border: 4px solid #4a2511;
+    border-radius: 12px 12px 0 0;
+    transform-origin: bottom;
+    transition: transform 1s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.coffre.opening .coffre-lid {
+    transform: rotateX(-120deg);
+}
+
+.coffre-lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: lock-pulse 1.5s ease-in-out infinite;
+}
+
+.coffre.opening .coffre-lock {
+    display: none;
+}
+
+.coffre-message {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-slow);
+}
+
+.coffre-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.coffre-message h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Canvas pour confettis */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* =========================================
+   CARTES RESTAURANTS
+   ========================================= */
+
+.instruction {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-dim);
+}
+
+.counter {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-accent);
+}
+
+.cartes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.cartes-grid-single {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.carte {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.carte-unique {
+    max-width: 300px;
+    width: 100%;
+}
+
+.carte.opened {
+    pointer-events: none;
+}
+
+.carte.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.carte-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.carte.flipped .carte-inner {
+    transform: rotateY(180deg);
+}
+
+.carte-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.carte-back {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    font-size: 4rem;
+    animation: card-glow 2s ease-in-out infinite;
+}
+
+.carte-front {
+    background: var(--color-bg-light);
+    transform: rotateY(180deg);
+    padding: var(--spacing-sm);
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+}
+
+.carte-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+.carte-front p {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-dim);
+}
+
+.carte-front a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(248, 181, 0, 0.1);
+    border-radius: 8px;
+    display: inline-block;
+    transition: all var(--transition-fast);
+}
+
+.carte-front a:hover {
+    background: rgba(248, 181, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.carte-select-btn {
+    margin-top: auto;
+    padding: 6px 12px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.carte-select-btn:hover {
+    background: var(--color-secondary);
+    transform: scale(1.05);
+}
+
+.carte.selected .carte-front {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 30px rgba(248, 181, 0, 0.6);
+}
+
+/* =========================================
+   RÉSULTAT FINAL
+   ========================================= */
+
+.restaurant-final {
+    background: var(--color-bg-light);
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 40px var(--color-glow);
+    margin: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.restaurant-final h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.restaurant-final p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.restaurant-final a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.restaurant-final a:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(248, 181, 0, 0.6);
+}
+
+.final-message {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: var(--spacing-xl) 0;
+    color: var(--color-text-dim);
+}
+
+.final-signature {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    margin-top: var(--spacing-xl);
+}
+
+.final-signature strong {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+
+/* =========================================
+   BOUTONS
+   ========================================= */
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.6);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-primary.hidden {
+    display: none;
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { filter: drop-shadow(0 0 5px var(--color-glow)); }
+    50% { filter: drop-shadow(0 0 20px var(--color-glow)); }
+}
+
+@keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 10px var(--color-glow); }
+    50% { box-shadow: 0 0 25px var(--color-glow); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@keyframes lock-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes card-glow {
+    0%, 100% { box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3); }
+    50% { box-shadow: 0 5px 30px rgba(255, 107, 157, 0.6); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+    .title-main {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: var(--spacing-sm);
+    }
+    
+    .progress-indicator {
+        padding: 0;
+    }
+    
+    .step-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .step-label {
+        font-size: 0.65rem;
+    }
+    
+    .fragments-recap {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cartes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 400px) {
+    .title-main {
+        font-size: 1.6rem;
+    }
+    
+    .coffre {
+        width: 150px;
+        height: 120px;
+    }
+    
+    .coffre-body {
+        width: 150px;
+        height: 80px;
+    }
+    
+    .coffre-lid {
+        width: 150px;
+        height: 55px;
+    }
+}

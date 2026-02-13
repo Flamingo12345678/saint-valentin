@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Saint-Valentin 💝 Ernest & Grace</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+        }
+        
+        .content {
+            padding: 40px 20px;
+            background: #f9f9f9;
+        }
+        
+        .content h2 {
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .message {
+            color: #333333;
+            font-size: 1em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .message p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .qr-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #ff6b9d;
+        }
+        
+        .qr-title {
+            color: #c44569;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .qr-instruction {
+            color: #666666;
+            font-size: 0.95em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .steps {
+            color: #333333;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        
+        .steps h3 {
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .steps ol {
+            margin-left: 20px;
+            color: #555555;
+        }
+        
+        .steps li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .signature {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .print-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .print-button:hover {
+            background: #c44569;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .print-button {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .qr-code {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .content, .footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div class="header">
+            <h1>💝 Mission Saint-Valentin 💝</h1>
+            <p>Ernest & Grace</p>
+        </div>
+        
+        <!-- Contenu -->
+        <div class="content">
+            <h2>Ma chère Grace,</h2>
+            
+            <div class="message">
+                <p>Pour cette Saint-Valentin, j'ai préparé quelque chose de très spécial pour toi...</p>
+                <p><strong>Une aventure interactive te attend !</strong></p>
+            </div>
+            
+            <!-- QR Code -->
+            <div class="qr-section">
+                <div class="qr-title">📱 Scanne ce QR code</div>
+                <img class="qr-code" id="qr-code" src="" alt="QR Code">
+                <p class="qr-instruction">Avec ton téléphone 📲</p>
+            </div>
+            
+            <!-- Instructions -->
+            <div class="steps">
+                <h3>✨ Comment accéder à ta surprise :</h3>
+                <ol>
+                    <li><strong>Ouvre ce mail sur ta tablette</strong> (affichage plus large)</li>
+                    <li><strong>Suis le QR code</strong> avec ton téléphone</li>
+                    <li><strong>Résous les 3 énigmes</strong> basées sur notre histoire</li>
+                    <li><strong>Débloque le coffre</strong> et découvre ta surprise</li>
+                </ol>
+            </div>
+            
+            <div class="message">
+                <p style="color: #c44569; font-size: 1.1em;">
+                    <strong>Cette expérience n'existe que pour toi... 💕</strong>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Pied de page -->
+        <div class="footer">
+            <p>Avec tout mon amour,</p>
+            <p class="signature">Ernest ❤️</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">Saint-Valentin 2026</p>
+        </div>
+    </div>
+    
+    <!-- Boutons d'action -->
+    <div style="text-align: center; margin-top: 30px; display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <button class="print-button" onclick="downloadQRCode()" style="background: #2196F3;">
+            📥 Télécharger le QR code
+        </button>
+        <button class="print-button" onclick="downloadAsHTML()" style="background: #FF9800;">
+            💾 Télécharger le HTML
+        </button>
+        <button class="print-button" onclick="window.print()">
+            🖨️ Imprimer
+        </button>
+    </div>
+    
+    <!-- Instructions Gmail -->
+    <div style="max-width: 600px; margin: 30px auto; padding: 20px; background: #e3f2fd; border-left: 4px solid #2196F3; border-radius: 4px;">
+        <h3 style="color: #1565c0; margin-top: 0;">📧 Pour envoyer par Gmail :</h3>
+        <ol style="color: #333; line-height: 1.8;">
+            <li>Télécharge le QR code (bouton bleu)</li>
+            <li>Ouvre <strong>Gmail</strong> → Nouveau message</li>
+            <li>Clique sur <strong>⋮ (3 points)</strong> → <strong>Formatage activer</strong></li>
+            <li>Écris le message de ta main (voir template ci-dessous)</li>
+            <li>Ajoute l'image du QR code (📎 Joindre un fichier)</li>
+            <li>Envoie à Grace !</li>
+        </ol>
+    </div>
+    
+    <!-- Template texte -->
+    <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #f5f5f5; border-radius: 4px;">
+        <h3 style="color: #ff6b9d; margin-top: 0;">✨ Template texte à copier :</h3>
+        <div id="template-text" style="background: white; padding: 15px; border-radius: 4px; color: #333; line-height: 1.8; cursor: pointer; border: 1px solid #ddd;">
+Ma chère Grace,
+
+Pour cette Saint-Valentin, j'ai préparé quelque chose de très spécial pour toi...
+
+Une aventure interactive te attend ! 
+
+📱 SCAN LE QR CODE CI-JOINT AVEC TON TÉLÉPHONE
+
+✨ Comment accéder à ta surprise :
+1. Ouvre ce mail sur ta tablette (affichage plus large)
+2. Scanne le QR code avec ton téléphone
+3. Résous les 3 énigmes basées sur notre histoire
+4. Débloque le coffre et découvre ta surprise
+
+Cette expérience n'existe que pour toi... 💕
+
+Avec tout mon amour,
+Ernest ❤️
+
+Saint-Valentin 2026
+        </div>
+        <button class="print-button" onclick="copyTemplate()" style="margin-top: 15px; background: #4caf50;">
+            📋 Copier le texte
+        </button>
+    </div>
+    
+    <script>
+        // Générer le QR code pointant vers la mission principale
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainUrl = window.location.origin + window.location.pathname.replace('email.html', 'index.html');
+            const encodedUrl = encodeURIComponent(mainUrl);
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodedUrl}`;
+            
+            document.getElementById('qr-code').src = qrApiUrl;
+            
+            console.log('QR Code pointe vers:', mainUrl);
+        });
+        
+        // Télécharger le QR code en PNG
+        function downloadQRCode() {
+            const qrImg = document.getElementById('qr-code');
+            const link = document.createElement('a');
+            link.href = qrImg.src;
+            link.download = 'mission-saint-valentin-qr-code.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Télécharger le HTML en fichier
+        function downloadAsHTML() {
+            const html = document.documentElement.outerHTML;
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'mission-saint-valentin-email.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Copier le texte template
+        function copyTemplate() {
+            const template = document.getElementById('template-text').innerText;
+            navigator.clipboard.writeText(template).then(() => {
+                alert('✅ Texte copié !\n\nTu peux maintenant le coller dans Gmail.');
+            }).catch(err => {
+                alert('Erreur: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>
