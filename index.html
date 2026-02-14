@@ -60,7 +60,33 @@
             </div>
         </section>
         
-        <!-- Section 2: Énigme 1 -->
+        <!-- Section 2: Demande Valentine -->
+        <section id="valentine-section" class="section">
+            <div class="container">
+                <div class="enigme-header">
+                    <h2>Avant de commencer...</h2>
+                </div>
+                
+                <div class="enigme-content">
+                    <p class="enigme-question">
+                        Grace, veux-tu être ma Valentine ? 💖
+                    </p>
+                    
+                    <div class="valentine-actions">
+                        <button id="valentine-yes" class="btn-primary" onclick="app.acceptValentine()">
+                            Oui, avec joie ! 💕
+                        </button>
+                        <button id="valentine-no" class="btn-secondary" onclick="app.declineValentine()">
+                            Non... 🙈
+                        </button>
+                    </div>
+                    
+                    <div id="valentine-feedback" class="feedback"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Énigme 1 -->
         <section id="enigme1-section" class="section">
             <div class="container">
                 <div class="enigme-header">

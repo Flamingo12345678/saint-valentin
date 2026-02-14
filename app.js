@@ -88,6 +88,11 @@ const app = {
         document.getElementById('code-input')?.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.checkFinalCode();
         });
+
+        // Animation au survol du bouton Non
+        document.getElementById('valentine-no')?.addEventListener('pointerenter', () => {
+            this.teaseValentine();
+        });
     },
     
     // Générer le QR code
@@ -120,11 +125,72 @@ const app = {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     },
-    
+
     // Démarrer la mission
     startMission() {
         this.playSound('start');
-        this.goToSection('enigme1-section');
+        this.goToSection('valentine-section');
+    },
+
+    // =========================================
+    // DEMANDE VALENTINE
+    // =========================================
+    acceptValentine() {
+        const feedback = document.getElementById('valentine-feedback');
+        feedback.textContent = '💝 J\'en étais sûr ! On commence l\'aventure...';
+        feedback.className = 'feedback success';
+        this.playSound('success');
+        
+        setTimeout(() => {
+            this.goToSection('enigme1-section');
+        }, 2000);
+    },
+
+    declineValentine() {
+        const feedback = document.getElementById('valentine-feedback');
+        feedback.textContent = '🥺 Je suis sûr que tu voulais dire oui... Reconsidère ?';
+        feedback.className = 'feedback error';
+        this.playSound('error');
+
+        // Sur mobile, le clic remplace le survol
+        this.teaseValentine();
+    },
+
+    teaseValentine() {
+        const yesButton = document.getElementById('valentine-yes');
+        const noButton = document.getElementById('valentine-no');
+        if (!yesButton || !noButton) return;
+
+        const currentYes = parseFloat(yesButton.dataset.scale || '1');
+        const currentNo = parseFloat(noButton.dataset.scale || '1');
+
+        const nextYes = Math.min(currentYes + 0.06, 1.6);
+        const nextNo = Math.max(currentNo - 0.06, 0.6);
+
+        yesButton.dataset.scale = nextYes.toString();
+        noButton.dataset.scale = nextNo.toString();
+
+        yesButton.style.transform = `scale(${nextYes})`;
+        noButton.style.transform = `scale(${nextNo})`;
+        yesButton.classList.add('valentine-grow');
+        noButton.classList.add('valentine-shrink');
+
+        if (nextNo <= 0.6) {
+            const container = noButton.parentElement;
+            if (container) {
+                const containerRect = container.getBoundingClientRect();
+                const buttonRect = noButton.getBoundingClientRect();
+                const maxX = Math.max(containerRect.width - buttonRect.width, 0);
+                const maxY = Math.max(containerRect.height - buttonRect.height, 0);
+
+                const randomX = Math.random() * maxX - maxX / 2;
+                const randomY = Math.random() * maxY - maxY / 2;
+
+                noButton.style.position = 'relative';
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+            }
+        }
     },
     
     // =========================================
