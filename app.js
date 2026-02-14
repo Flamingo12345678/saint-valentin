@@ -7,7 +7,7 @@ const app = {
     config: {
         enigme1Answer: '26042024', // Date début relation (à personnaliser)
         enigme2Answer: 'mini messi', // Surnom (à personnaliser)
-        enigme3Answer: '18022024', // Date première rencontre (à personnaliser)
+        enigme3Answer: '17022024', // Date première rencontre (à personnaliser)
         finalCode: 'ERNESTGRC',
         maxCardsToOpen: 3
     },
